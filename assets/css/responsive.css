@@ -1,0 +1,100 @@
+/* large screens */
+@media (min-width: 1600px)
+{
+
+}
+
+
+@media (max-width: 1500px)
+{
+    .step-inner
+    {
+        padding: 50px 100px;
+    }
+    .radio-field
+    {
+        width: 100%;
+    }
+    .quiz-question
+    {
+        width: 70%;
+    }
+}
+
+
+/* Desktops/Laptops */
+@media (max-width: 1200px)
+{
+    .quiz-question
+    {
+        width: 80%;
+        font-size: 40px;
+    }
+    .radio-field
+    {
+        height: 75px;
+    }
+    .radio-field label
+    {
+        font-size: 20px;
+    }
+}
+
+/* Laptops */
+@media (max-width: 1024px)
+{
+
+}
+
+/* Tablets */
+@media (max-width: 768px)
+{
+    .tab-50
+    {
+        width: 50%;
+    }
+    .step-inner
+    {
+        padding: 50px;
+    }
+    .quiz-question
+    {
+        width: 100%;
+        font-size: 35px;
+    }
+}
+
+/* mobile */
+@media (max-width: 480px)
+{
+    .tab-50
+    {
+        width: 100%;
+    }
+    main
+    {
+        padding: 0;
+    }
+    .step-bar
+    {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgb(255,255,255);
+        height: 50px;
+        padding-top: 15px;
+    }
+    .next-prev button
+    {
+        width: 100%;
+    }
+    .step-inner
+    {
+        padding: 20px;
+        padding-top: 50px;
+    }
+    .quiz-question
+    {
+        font-size: 25px;
+    }
+}
