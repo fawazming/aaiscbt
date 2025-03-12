@@ -363,7 +363,7 @@ class Adminer extends BaseController
                 'code' => $incoming['code'],
                 'title' => $incoming['title'],
                 'description' => $incoming['description'],
-                'published' => 0,
+                'published' => 1,
                 'questions' => array(json_encode($quest)),
                 'answers' => array(json_encode($answer)),
             ];
