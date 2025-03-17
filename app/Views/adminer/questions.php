@@ -37,7 +37,7 @@
                             <label for="">Question <?=$key+1?>:</label>
                             <div class="row">
                                 <div class="col-12 col-md-9 form-group">
-                                    <input class="form-control" type="text" name="obj<?=$key+1?>[0]" placeholder="Question...">
+                                    <textarea class="form-control" name="obj<?=$key+1?>[0]" placeholder="Question..."></textarea>
                                 </div>
                                 <div class="col-12 col-md-3 form-group">
                                     <input class="form-control" type="text" name="obj<?=$key+1?>[5]" placeholder="Answer...">
