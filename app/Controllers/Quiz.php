@@ -234,6 +234,73 @@ class Quiz extends BaseController
         }
 	}
 
+	public function probe($id)
+	{
+            
+            // $id = $this->test($id, 0);
+
+    		// echo ('<center>Solution for quiz '.$id.'</center><br>');
+            $scoresheet = new \App\Models\Scoresheet();
+    		$quizlet = new \App\Models\Quiz();
+    		$users = new \App\Models\Users();
+
+			$udata = $scoresheet->where('id', $id)->first();
+			$participant = $users->where('id', $udata['user'])->first();
+
+            $result = $quizlet->where('id', $udata['quiz'])->find();
+            $res = $result[0]['answers'];
+            $que = $result[0]['questions'];
+            // $id = $result[0]['id'];
+
+            echo ('<center>'.$participant['username'].' Solution for '.$result[0]['title'].'</center><br>');
+
+            $uAns = [];
+            $db = $scoresheet->where('id',$id)->find();
+            if(!empty($db[0]['answers'])){
+                $uAns = json_decode($db[0]['answers']);
+				echo ('<b> Chosen Answer </b> <br>');
+				var_dump($uAns);
+				echo ('<br> <b> Programmed Answer </b> <br>');
+				var_dump($res);
+                echo ('<center>You Scored <h2>'.$udata['score'].'</h2></center><br>');
+            }else{
+                echo ("<center>User's Answers not recorded</center><br>");
+            }
+    		// $id = md
+            // var_dump($uAns);
+    		foreach (json_decode($que) as $ky => $qus) {
+    			echo ('('.($ky + 1) . ') ' . $qus->{0} . '<br>');
+    			$option = [
+    				'a' => $qus->{1},
+    				'b' => $qus->{2},
+    				'c' => $qus->{3},
+    				'd' => $qus->{4},
+    			];
+    			foreach (json_decode($res) as $ke => $ans) {
+    				if ($qus->id == $ans->id) {
+    					foreach ($option as $key => $opt) {
+    						echo ($key.') '.$opt);
+                            $vl = $ke.'que'.$ke;
+
+    						if ($ans->ans == $key) {
+                                echo (' &#9989;');
+                                // if($uAns->$vl == $key){
+                                //     echo (' &#9989;');
+                                // }
+    						}else{
+                               if($uAns->$vl == $key){
+                                    echo (' &#10060;');
+                                }
+                            }
+    						echo '<br>';
+    					}
+						echo '<i>You Answered: '.$uAns->$vl.' and the correct answer is: '.$ans->ans.'</i> <br>';
+    					echo '<br>';
+    				}
+    			}
+    		}
+	}
+
 
     public function postrlogin($id)
     {

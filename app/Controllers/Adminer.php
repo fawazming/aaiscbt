@@ -151,6 +151,44 @@ class Adminer extends BaseController
 	}
 
 
+	public function probe()
+	{
+		$var = new \App\Models\Variables();
+		$scoresheet = new \App\Models\Scoresheet();
+		$user = new \App\Models\Users();
+		$quiz = new \App\Models\Quiz();
+		$session = session();
+		$incoming = $this->request->getGet();
+		if ($session->logged_in == TRUE) {
+			$participants = null;
+			if($incoming['exam'] !== null) {
+				$exam = $incoming['exam'];
+				
+				$quizid = $quiz->where('code', $exam)->find()[0]['id'];
+				$participants = $scoresheet->where('scoresheet.quiz', $quizid)->find();
+				// dd($participants);
+			}
+			$data = [
+				'quizinput' => $var->where('key', 'quizinput')->find()[0]['value'],
+				'quizparticipants' => count($scoresheet->where('sent', '0')->find()),
+				'score' => $scoresheet->join('users', 'users.id = scoresheet.user')->findAll(),
+				'users' => $user->where('clearance', '1')->findAll(),
+				'quizs' => $quiz->findAll(),
+				'participants' => $participants,
+			];
+			$hdata = [
+				'owner' => $var->where('key', 'owner')->find()[0]['value'],
+			];
+
+			echo view('adminer/header', $hdata);
+			echo view('adminer/sidebar');
+			echo view('adminer/probe', $data);
+		} else {
+			$this->login();
+		}
+	}
+
+
 	public function quizinput()
 	{
 		$var = new \App\Models\Variables();
@@ -300,7 +338,7 @@ class Adminer extends BaseController
 				'code' => $incoming['code'],
 				'title' => $incoming['title'],
 				'description' => $incoming['description'],
-				'published' => 0,
+				'published' => 1,
 				'questions' => array(json_encode($quest)),
 				'answers' => array(json_encode($answer)),
 			];
@@ -414,7 +452,7 @@ class Adminer extends BaseController
 				'code' => $incoming['code'],
 				'title' => $incoming['title'],
 				'description' => $incoming['description'],
-				'published' => 0,
+				'published' => 1,
 				'questions' => array(json_encode($quest)),
 				'answers' => array(json_encode($answer)),
 			];

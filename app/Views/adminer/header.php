@@ -139,14 +139,6 @@
                                     </form>
                                 </div>
                             </li>
-                            <!-- <li class="nav-item dropdown d-none d-md-block">
-                                <a href="#" class="nav-link" title="Actions" data-toggle="dropdown">Create</a>
-                                <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Add Products</a>
-                                    <a href="#" class="dropdown-item disabled">Add Category</a>
-                                    <a href="#" class="dropdown-item disabled">Add Report</a>
-                                </div>
-                            </li> -->
                         </ul>
                     </div>
 

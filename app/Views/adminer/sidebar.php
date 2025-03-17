@@ -55,6 +55,15 @@
                             <span class="badge badge-danger"></span>
                         </a>
                     </li>
+                    <li>
+                        <a href="probe">
+                            <span class="nav-link-icon">
+                                <i data-feather="message-circle"></i>
+                            </span>
+                            <span>Probe Exam</span>
+                            <span class="badge badge-danger"></span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
