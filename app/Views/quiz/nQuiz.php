@@ -71,8 +71,8 @@
     </div>
 
     <script>
-        const API_FETCH_URL = "http://localhost/aaiscbt/api/fetch-test"; // Replace with real endpoint
-        const API_SUBMIT_URL = "http://localhost/aaiscbt/api/submit-results"; // Replace with real endpoint
+        const API_FETCH_URL = "<?=base_url()?>api/fetch-test"; // Replace with real endpoint
+        const API_SUBMIT_URL = "<?=base_url()?>api/submit-results"; // Replace with real endpoint
         const AI_SCORER_URL = "https://openrouter.ai/api/v1/chat/completions";
 
         let questions = [];
