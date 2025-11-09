@@ -9,6 +9,11 @@ class Quiz extends BaseController
 		// echo view('welcome_message');
 		return redirect()->to(base_url('access'));
 	}
+
+	public function newQuiz() {
+		echo view('quiz/nQuiz');
+	}
+
 	public function quizcode()
 	{
 		$var = new \App\Models\Variables();

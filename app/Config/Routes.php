@@ -5,6 +5,12 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) {
+    $routes->get('fetch-test', 'QuizController::fetch');
+    $routes->get('fetch-test-a', 'QuizController::fetcha');
+    $routes->post('submit-results', 'ScoreController::submit');
+});
+
 $routes->get('/', 'Quiz::index');
 $routes->get('/solution/(:segment)', 'Quiz::solution/$1');
 $routes->get('/gallery', 'Home::gallery');
@@ -13,6 +19,10 @@ $routes->get('/blog/(:any)', 'Home::blogD/$1');
 $routes->get('/tests', 'Home::tests');
 
 // $routes->get('/', 'Home::index');
+// New Quiz
+$routes->get('/newQuiz', 'Quiz::newQuiz');
+
+
 $routes->get('/access', 'Quiz::quizcode');
 $routes->get('/quiz', 'Quiz::processcode');
 $routes->get('/login', 'Quiz::login');
